@@ -11,7 +11,11 @@
 # HTTP methods GET, POST, PUT, and DELETE to the screen and back to
 # the user-agent/client that sent the data.
 #
-# One use of this program is for testing webhooks.
+# One use of this program is for testing webhooks. This HTTP
+# handler can be the server endpoint for a webhook.
+#
+# It could also be used as a building block for a full
+# featured webhook handler. 
 #
 #
 # Example Usage:
@@ -128,9 +132,7 @@ class RequestHandler(BaseHTTPRequestHandler):
         
         request_headers = self.headers
         content_length = request_headers.get('content-length')
-        length = int(content_length)
-        
-        # pdb.set_trace()
+        length = int(content_length)       
         
         print(request_headers)
         
@@ -142,9 +144,7 @@ class RequestHandler(BaseHTTPRequestHandler):
         
             print("JSON received")
         
-            json_text = json.loads(post_data.decode("utf-8"))
-        
-            # print(json_text["fname"])
+            json_text = json.loads(post_data.decode("utf-8"))                    
         
         
         print("<----- Request End -----\n")
